@@ -30,7 +30,9 @@ const Header = () => {
   return (
     <div className="w-full p-6">
       <div className="flex flex-col md:flex-row justify-between items-center max-w-6xl mx-auto">
-        <div className="text-4xl font-bold text-gray-900">My Portfolio</div>
+        <div className="text-4xl font-bold text-gray-900">
+          <span className="text-blue-900">My</span> Portfolio
+        </div>
         <div className="flex justify-between mt-4 md:mt-0">
           {navLinks.map((link, index) => (
             <ul key={index} className="px-1 md:px-2 text-lg md:text-xl">

@@ -8,7 +8,7 @@ import { Fade } from 'react-awesome-reveal';
 export default function Home({ data }) {
   // console.log(data);
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-4xl mx-auto">
       <Head>
         <title>Next Portfolio</title>
         <meta name="description" content="Next Portfolio" />
@@ -61,7 +61,7 @@ export default function Home({ data }) {
 
       {/*Blog Section*/}
       <Fade triggerOnce>
-        <div className="mt-14 mx-4 md:mx-auto px-4 border-gray-400 shadow-md">
+        <div className="mt-14 mx-4 md:mx-auto px-4  border border-gray-200 shadow-lg">
           <div className="mt-10">
             <h2 className="text-4xl font-semibold text-gray-900 pt-8 mb-8">
               Recent Posts
@@ -74,8 +74,16 @@ export default function Home({ data }) {
                       <p className="text-gray-600 text-sm mb-4">
                         {new Date(post.date).toDateString()}
                       </p>
+                      <div className="p-2 bg-cover">
+                        <Image
+                          src={post.coverImage.url}
+                          width="600"
+                          height="400"
+                          layout="responsive"
+                        />
+                      </div>
                     </div>
-                    <div className="col-span-3">
+                    <div className="col-span-3 p-4 flex flex-col place-items-start mt-6">
                       <Link href={`/blog/${post.slug}`}>
                         <a className="text-2xl font-semibold text-gray-900 hover:text-gray-600 transition-colors duration-300">
                           {post.title}

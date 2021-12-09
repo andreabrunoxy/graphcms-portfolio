@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { request } from 'graphql-request';
 import Link from 'next/link';
+import Image from 'next/image';
 import useSWR from 'swr';
 import { Fade } from 'react-awesome-reveal';
 
@@ -38,6 +39,9 @@ const BlogPage = ({ posts }) => {
               date
               slug
               description
+              coverImage {
+                url
+              }
               author {
                 name
               }
@@ -89,15 +93,23 @@ const BlogPage = ({ posts }) => {
               <Link href={`/blog/${post.node.slug}`}>
                 <div
                   key={post.node.slug}
-                  className="max-w-3xl mt-14 mb-8 mx-4 md:mx-auto px-4 border-gray-400 shadow-md hover:transition-transform hover:-translate-y-1 duration-300 cursor-pointer"
+                  className="max-w-3xl mt-8 mb-8 mx-4 md:mx-auto px-4 border border-gray-200 shadow-lg hover:transition-transform hover:-translate-y-1 duration-300 cursor-pointer"
                 >
-                  <div className="grid grid-cols-1 md:grid-cols-4 py-4">
+                  <div className="grid grid-cols-1 md:grid-cols-4 py-4 m">
                     <div className="col-span-1">
                       <p className="text-gray-600 text-sm mb-4">
                         {new Date(post.node.date).toDateString()}
                       </p>
+                      <div>
+                        <Image
+                          src={post.node.coverImage.url}
+                          width="600"
+                          height="400"
+                          layout="responsive"
+                        />
+                      </div>
                     </div>
-                    <div className="col-span-3">
+                    <div className="col-span-3 p-6">
                       <a className="text-2xl font-semibold text-gray-900 hover:text-gray-600 transition-colors duration-300">
                         {post.node.title}
                       </a>
@@ -162,6 +174,9 @@ export const getStaticProps = async () => {
             date
             slug
             description
+            coverImage {
+              url
+            }
             author {
               name
             }
