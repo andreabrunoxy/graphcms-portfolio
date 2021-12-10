@@ -25,6 +25,10 @@ const Header = () => {
     {
       name: 'Gallery',
       href: '/gallery'
+    },
+    {
+      name: 'Contacts',
+      href: '/contacts'
     }
   ];
   return (
@@ -33,7 +37,7 @@ const Header = () => {
         <div className="text-4xl font-bold text-gray-900">
           <span className="text-blue-900">My</span> Portfolio
         </div>
-        <div className="flex justify-between mt-4 md:mt-0">
+        <div className="flex flex-wrap pl-8 pr-8 md:p-0 justify-center md:justify-between mt-4 md:mt-0">
           {navLinks.map((link, index) => (
             <ul key={index} className="px-1 md:px-2 text-lg md:text-xl">
               <Link href={link.href}>
