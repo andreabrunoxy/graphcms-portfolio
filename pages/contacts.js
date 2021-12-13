@@ -8,7 +8,9 @@ const Contacts = () => {
     info: { error: false, msg: null }
   });
   const [inputs, setInputs] = useState({
+    name: '',
     email: '',
+    subject: '',
     message: ''
   });
   const handleServerResponse = (ok, msg) => {
@@ -47,7 +49,7 @@ const Contacts = () => {
     setStatus(prevStatus => ({ ...prevStatus, submitting: true }));
     axios({
       method: 'POST',
-      url: 'https://formspree.io/f/xyyoyenv',
+      url: `${process.env.NEXT_PUBLIC_FORMSPREE_PROJECT}`,
       data: inputs
     })
       .then(response => {
@@ -67,6 +69,7 @@ const Contacts = () => {
         <h1 className="text-2xl mb-4 self-center">Fill the form below</h1>
         <div className="flex flex-col p-6">
           <form onSubmit={handleOnSubmit}>
+            <input type="hidden" name="_language" value="it" />
             <div className="flex flex-col mb-4">
               <label htmlFor="name" className="mb-4">
                 Name
@@ -78,7 +81,7 @@ const Contacts = () => {
                 onChange={handleOnChange}
                 required
                 value={inputs.name}
-                className="p-2 border border-gray-200 focus:border-gray-400 transition-all duration-500 outline-none"
+                className="p-2 border border-gray-200 focus:border-gray-400 focus:shadow-md transition-all duration-500 outline-none"
                 placeholder="insert your name"
               />
             </div>
@@ -93,7 +96,7 @@ const Contacts = () => {
                 onChange={handleOnChange}
                 required
                 value={inputs.email}
-                className="p-2 border border-gray-200 focus:border-gray-400 transition-all duration-500 outline-none"
+                className="p-2 border border-gray-200 focus:border-gray-400 focus:shadow-md transition-all duration-500 outline-none"
                 placeholder="insert your email"
               />
             </div>
@@ -108,7 +111,7 @@ const Contacts = () => {
                 onChange={handleOnChange}
                 required
                 value={inputs.subject}
-                className="p-2 border border-gray-200 focus:border-gray-400 transition-all duration-500 outline-none"
+                className="p-2 border border-gray-200 focus:border-gray-400 focus:shadow-md transition-all duration-500 outline-none"
                 placeholder="insert your subject"
               />
             </div>
@@ -123,7 +126,7 @@ const Contacts = () => {
                 required
                 value={inputs.message}
                 placeholder="write your message"
-                className="h-48 p-2 border border-gray-200 focus:border-gray-400 transition-all duration-500 outline-none"
+                className="h-48 p-2 border border-gray-200 focus:border-gray-400 focus:shadow-md transition-all duration-500 outline-none"
               />
             </div>
             <div className="flex flex-col mb-4 p-4">

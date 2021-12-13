@@ -10,7 +10,7 @@ export default function Home({ data }) {
   return (
     <div className="max-w-4xl mx-auto">
       <Head>
-        <title>Next Portfolio</title>
+        <title>GraphCMS Portfolio</title>
         <meta name="description" content="Next Portfolio" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import React from 'react';
+import { Fade } from 'react-awesome-reveal';
 import { getPortfolioItem, getPortfolioSlugs } from '../../lib/data';
 
 export default function Home({ portfolioItem }) {
@@ -67,33 +68,35 @@ export default function Home({ portfolioItem }) {
         <meta name="description" content="Next Portfolio" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="container flex-col m-6 p-6 lg:w-1/2 border-gray-400 shadow-md">
-        <h1 className="font-bold text-6xl mb-8">{portfolioItem.title}</h1>
-        <p className="mb-4">{new Date(portfolioItem.date).toDateString()}</p>
-        <p className="mb-8 text-2xl leading-relaxed">{portfolioItem.description}</p>
-        <div className="mb-8 text-sm">
-          {portfolioItem.tags.map(tag => (
-            <span
-              className="text-xs md:text-sm uppercase tracking-wide mr-2 bg-gray-200 px-2 py-1 rounded-lg"
-              key={tag}
-            >
-              {' '}
-              {tag}
-            </span>
-          ))}
-        </div>
-        <Image
-          src={portfolioItem.coverImage.url}
-          width={portfolioItem.coverImage.width}
-          height={portfolioItem.coverImage.height}
-        />
-        <div className="after:inline-block border-b border-gray-200 mb-8 leading-relaxed"></div>
-        {portfolioItem.content.raw.children.map((typeObj, index) => {
-          const children = typeObj.children.map((item, itemIndex) =>
-            getContentFragment(itemIndex, item.text, item)
-          );
-          return getContentFragment(index, children, typeObj, typeObj.type);
-        })}
+      <div className="container flex-col m-6 p-4 lg:w-1/2">
+        <Fade triggerOnce>
+          <h1 className="font-bold text-6xl mb-8">{portfolioItem.title}</h1>
+          <p className="mb-4">{new Date(portfolioItem.date).toDateString()}</p>
+          <p className="mb-8 text-2xl leading-relaxed">{portfolioItem.description}</p>
+          <div className="mb-8 text-sm">
+            {portfolioItem.tags.map(tag => (
+              <span
+                className="text-xs md:text-sm uppercase tracking-wide mr-2 bg-gray-200 px-2 py-1 rounded-lg"
+                key={tag}
+              >
+                {' '}
+                {tag}
+              </span>
+            ))}
+          </div>
+          <Image
+            src={portfolioItem.coverImage.url}
+            width={portfolioItem.coverImage.width}
+            height={portfolioItem.coverImage.height}
+          />
+          <div className="after:inline-block border-b border-gray-200 mb-8 leading-relaxed"></div>
+          {portfolioItem.content.raw.children.map((typeObj, index) => {
+            const children = typeObj.children.map((item, itemIndex) =>
+              getContentFragment(itemIndex, item.text, item)
+            );
+            return getContentFragment(index, children, typeObj, typeObj.type);
+          })}
+        </Fade>
       </div>
     </div>
   );

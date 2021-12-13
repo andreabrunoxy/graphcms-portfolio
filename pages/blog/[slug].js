@@ -2,6 +2,19 @@ import Head from 'next/head';
 import Image from 'next/image';
 import React from 'react';
 import { getPost, getBlogSlugs } from '../../lib/data';
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  FacebookMessengerShareButton,
+  FacebookMessengerIcon,
+  EmailShareButton,
+  EmailIcon,
+  WhatsappIcon,
+  WhatsappShareButton,
+  TwitterIcon,
+  TwitterShareButton
+} from 'next-share';
+import { Fade } from 'react-awesome-reveal';
 
 export default function Home({ post }) {
   console.log(post);
@@ -62,34 +75,74 @@ export default function Home({ post }) {
   return (
     <div className="flex justify-center">
       <Head>
-        <title>Next Portfolio</title>
+        <title>GraphCMS Portfolio</title>
         <meta name="description" content="Next Portfolio" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="container flex-col m-6 p-6 lg:w-1/2 border-gray-400 shadow-md">
-        <h1 className="font-bold text-6xl mb-4">{post.title}</h1>
-        <p className="mb-4">{new Date(post.date).toDateString()}</p>
-        <div className="mb-4 text-xs">
-          {post.tags.map(tag => (
-            <span
-              className="text-xs md:text-sm uppercase tracking-wide mr-2 bg-gray-200 px-2 py-1 rounded-lg"
-              key={tag}
-            >
-              {tag}
+
+      <div className="container flex-col m-6 p-4 lg:w-1/2 ">
+        <Fade triggerOnce>
+          <h1 className="font-bold text-6xl mb-4">{post.title}</h1>
+          <p className="mb-4">{new Date(post.date).toDateString()}</p>
+          <div className="mb-4 text-xs">
+            {post.tags.map(tag => (
+              <span
+                className="text-xs md:text-sm uppercase tracking-wide mr-2 bg-gray-200 px-2 py-1 rounded-lg"
+                key={tag}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+          <div className="flex items-center">
+            <p className="font-semibold mb-4 mr-4">{post.author.name}</p>
+            <Image src={post.author.image.url} width="60" height="60" />
+          </div>
+          <div className="after:inline-block border-b border-gray-200 mb-8 leading-relaxed"></div>
+          {post.content.raw.children.map((typeObj, index) => {
+            const children = typeObj.children.map((item, itemIndex) =>
+              getContentFragment(itemIndex, item.text, item)
+            );
+            return getContentFragment(index, children, typeObj, typeObj.type);
+          })}
+          <div>
+            <p className="mb-4">Share on:</p>
+            <span className="mr-2">
+              <FacebookShareButton
+                url={`https://graphcms-portfolio-andreabrunoxy.vercel.app/blog/${post.slug}`}
+                quote={`${post.title}`}
+                hashtag={'#myporftolio'}
+              >
+                <FacebookIcon size={32} round />
+              </FacebookShareButton>
             </span>
-          ))}
-        </div>
-        <div className="flex items-center">
-          <p className="font-semibold mb-4 mr-4">{post.author.name}</p>
-          <Image src={post.author.image.url} width="60" height="60" />
-        </div>
-        <div className="after:inline-block border-b border-gray-200 mb-8 leading-relaxed"></div>
-        {post.content.raw.children.map((typeObj, index) => {
-          const children = typeObj.children.map((item, itemIndex) =>
-            getContentFragment(itemIndex, item.text, item)
-          );
-          return getContentFragment(index, children, typeObj, typeObj.type);
-        })}
+            <span className="mr-2">
+              <FacebookMessengerShareButton
+                url={`https://graphcms-portfolio-andreabrunoxy.vercel.app/blog/${post.slug}`}
+                appId={''}
+              >
+                <FacebookMessengerIcon size={32} round />
+              </FacebookMessengerShareButton>
+            </span>
+            <span className="mr-2">
+              <TwitterShareButton
+                url={`https://graphcms-portfolio-andreabrunoxy.vercel.app/blog/${post.slug}`}
+                title={`${post.title}`}
+              >
+                <TwitterIcon size={32} round />
+              </TwitterShareButton>
+            </span>
+            <span className="mr-2">
+              <WhatsappShareButton
+                url={`https://graphcms-portfolio-andreabrunoxy.vercel.app/blog/${post.slug}`}
+                title={`${post.title}`}
+                separator=":: "
+              >
+                <WhatsappIcon size={32} round />
+              </WhatsappShareButton>
+            </span>
+          </div>
+        </Fade>
       </div>
     </div>
   );
