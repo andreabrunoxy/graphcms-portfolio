@@ -72,7 +72,6 @@ const BlogPage = ({ posts }) => {
     );
   }
   console.log(posts);
-  console.log(data);
 
   return (
     <div className="flex flex-col">
@@ -89,41 +88,40 @@ const BlogPage = ({ posts }) => {
       <div className="mt-4">
         {data &&
           data.postsConnection.edges.map(post => (
-            <Fade triggerOnce fraction={0.3}>
-              <Link href={`/blog/${post.node.slug}`}>
-                <div
-                  key={post.node.slug}
-                  className="max-w-3xl mt-8 mb-8 mx-4 md:mx-auto px-4 border border-gray-200 shadow-lg hover:transition-transform hover:-translate-y-1 duration-300 cursor-pointer"
-                >
-                  <div className="grid grid-cols-1 md:grid-cols-4 py-4 m">
-                    <div className="col-span-1">
-                      <p className="text-gray-600 text-sm mb-4">
-                        {new Date(post.node.date).toDateString()}
-                      </p>
-                      <div>
-                        <Image
-                          src={post.node.coverImage.url}
-                          width="600"
-                          height="400"
-                          layout="responsive"
-                        />
+            <div key={post.node.slug}>
+              <Fade triggerOnce fraction={0.3}>
+                <Link href={`/blog/${post.node.slug}`}>
+                  <div className="max-w-3xl mt-8 mb-8 mx-4 md:mx-auto px-4 border border-gray-200 shadow-lg hover:transition-transform hover:-translate-y-1 duration-300 cursor-pointer">
+                    <div className="grid grid-cols-1 md:grid-cols-4 py-4 m">
+                      <div className="col-span-1">
+                        <p className="text-gray-600 text-sm mb-4">
+                          {new Date(post.node.date).toDateString()}
+                        </p>
+                        <div>
+                          <Image
+                            src={post.node.coverImage.url}
+                            width="600"
+                            height="400"
+                            layout="responsive"
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <div className="col-span-3 p-6">
-                      <a className="text-2xl font-semibold text-gray-900 hover:text-gray-600 transition-colors duration-300">
-                        {post.node.title}
-                      </a>
-                      <p className="text-gray-600 leading-relaxed mt-4 mb-4">
-                        {post.node.description}
-                      </p>
-                      <div className="text-sm text-gray-700 font-semibold">
-                        {post.node.author.name}
+                      <div className="col-span-3 p-6">
+                        <a className="text-2xl font-semibold text-gray-900 hover:text-gray-600 transition-colors duration-300">
+                          {post.node.title}
+                        </a>
+                        <p className="text-gray-600 leading-relaxed mt-4 mb-4">
+                          {post.node.description}
+                        </p>
+                        <div className="text-sm text-gray-700 font-semibold">
+                          {post.node.author.name}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </Link>
-            </Fade>
+                </Link>
+              </Fade>
+            </div>
           ))}
       </div>
       {data && (
