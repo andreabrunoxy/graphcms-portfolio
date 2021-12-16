@@ -62,7 +62,7 @@ export default function Home({ portfolioItem }) {
     }
   };
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center dark:bg-gray-800">
       <Head>
         <title>Next Portfolio</title>
         <meta name="description" content="Next Portfolio" />
@@ -76,7 +76,7 @@ export default function Home({ portfolioItem }) {
           <div className="mb-8 text-sm">
             {portfolioItem.tags.map(tag => (
               <span
-                className="text-xs md:text-sm uppercase tracking-wide mr-2 bg-gray-200 px-2 py-1 rounded-lg"
+                className="text-xs md:text-sm uppercase tracking-wide mr-2 bg-gray-200 dark:text-gray-800 px-2 py-1 rounded-lg"
                 key={tag}
               >
                 {' '}

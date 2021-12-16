@@ -73,7 +73,7 @@ export default function Home({ post }) {
     }
   };
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center dark:bg-gray-800">
       <Head>
         <title>GraphCMS Portfolio</title>
         <meta name="description" content="Next Portfolio" />
@@ -82,12 +82,12 @@ export default function Home({ post }) {
 
       <div className="container flex-col m-6 p-4 lg:w-1/2 ">
         <Fade triggerOnce>
-          <h1 className="font-bold text-6xl mb-4">{post.title}</h1>
+          <h1 className="font-bold text-6xl mb-4 ">{post.title}</h1>
           <p className="mb-4">{new Date(post.date).toDateString()}</p>
           <div className="mb-4 text-xs">
             {post.tags.map(tag => (
               <span
-                className="text-xs md:text-sm uppercase tracking-wide mr-2 bg-gray-200 px-2 py-1 rounded-lg"
+                className="text-xs md:text-sm uppercase tracking-wide mr-2 bg-gray-200 dark:text-gray-800 px-2 py-1 rounded-lg"
                 key={tag}
               >
                 {tag}

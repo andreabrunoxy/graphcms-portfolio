@@ -21,10 +21,10 @@ const blurImages = async photos => {
 
 const Gallery = ({ blurredPhotos }) => {
   return (
-    <>
-      <div className="flex">
-        <h2 className="text-4xl font-semibold text-gray-900 mb-8 pt-8 mx-auto">
-          <span className="text-blue-900 font-bold">Gallery</span> Page
+    <div className="max-w-full dark:bg-gray-800">
+      <div className="max-w-full flex">
+        <h2 className="text-4xl font-semibold text-gray-900 mb-8 pt-8 mx-auto dark:text-gray-100">
+          <span className="text-blue-900 dark:text-blue-500 font-bold">Gallery</span> Page
         </h2>
       </div>
       <div className="max-w-3xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -41,7 +41,7 @@ const Gallery = ({ blurredPhotos }) => {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

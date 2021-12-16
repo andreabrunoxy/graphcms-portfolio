@@ -74,16 +74,16 @@ const BlogPage = ({ posts }) => {
   console.log(posts);
 
   return (
-    <div className="flex flex-col">
-      <h2 className="text-4xl font-semibold text-gray-900 pt-8 self-center">
-        <span className="text-blue-900 font-bold">Blog</span> Page
+    <div className="flex flex-col dark:bg-gray-800">
+      <h2 className="text-4xl font-semibold text-gray-900 mb-8 pt-8 self-center dark:text-gray-100">
+        <span className="text-blue-900 dark:text-blue-500 font-bold">Blog</span> Page
       </h2>
       <input
         type="text"
         value={searchValue}
-        placeholder="Search blog posts"
+        placeholder="🔍 Search blog posts"
         onChange={e => setSearchValue(e.target.value)}
-        className="w-1/2 md:w-1/3 lg:w-1/4 h-10 rounded-md pl-2 mt-8 mx-auto border border-gray-400 focus:outline-none focus:ring-1 focus:drop-shadow-md focus:ring-gray-500"
+        className="w-200 md:w-1/3 lg:w-1/4 h-10 rounded-full pl-2 mt-4 mx-auto border border-gray-400 focus:outline-none focus:ring-1 focus:drop-shadow-md focus:ring-gray-500"
       />
       <div className="mt-4">
         {data &&
@@ -92,9 +92,9 @@ const BlogPage = ({ posts }) => {
               <Fade triggerOnce fraction={0.3}>
                 <Link href={`/blog/${post.node.slug}`}>
                   <div className="max-w-3xl mt-8 mb-8 mx-4 md:mx-auto px-4 border border-gray-200 shadow-lg hover:transition-transform hover:-translate-y-1 duration-300 cursor-pointer">
-                    <div className="grid grid-cols-1 md:grid-cols-4 py-4 m">
+                    <div className="grid grid-cols-1 md:grid-cols-4 py-4">
                       <div className="col-span-1">
-                        <p className="text-gray-600 text-sm mb-4">
+                        <p className="text-gray-600 text-sm mb-4 dark:text-gray-100">
                           {new Date(post.node.date).toDateString()}
                         </p>
                         <div>
@@ -106,14 +106,14 @@ const BlogPage = ({ posts }) => {
                           />
                         </div>
                       </div>
-                      <div className="col-span-3 p-6">
-                        <a className="text-2xl font-semibold text-gray-900 hover:text-gray-600 transition-colors duration-300">
+                      <div className="col-span-3 p-4">
+                        <a className="text-2xl font-semibold text-gray-900 hover:text-gray-600 transition-colors duration-300 dark:text-gray-100">
                           {post.node.title}
                         </a>
-                        <p className="text-gray-600 leading-relaxed mt-4 mb-4">
+                        <p className="text-gray-600 leading-relaxed mt-4 mb-4 dark:text-gray-100">
                           {post.node.description}
                         </p>
-                        <div className="text-sm text-gray-700 font-semibold">
+                        <div className="text-sm text-gray-700 font-semibold dark:text-gray-100  ">
                           {post.node.author.name}
                         </div>
                       </div>
@@ -145,7 +145,7 @@ const BlogPage = ({ posts }) => {
             </button>
           </div>
           {!searchValue && (
-            <div className="text-gray-800">
+            <div className="text-gray-800 dark:text-gray-100">
               Page: {currentPage} of {Math.ceil(posts.postsConnection.edges.length / 2)}
             </div>
           )}

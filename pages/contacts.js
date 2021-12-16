@@ -61,13 +61,15 @@ const Contacts = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto lg:px-0 flex flex-col">
-      <h2 className="text-4xl font-semibold text-gray-900 mb-8 pt-8 self-center">
-        <span className="text-blue-900 font-bold">Contacts</span> Page
+    <div className="lg:px-0 flex flex-col dark:bg-gray-800">
+      <h2 className="text-4xl font-semibold text-gray-900 mb-8 pt-8 self-center dark:text-gray-100">
+        <span className="text-blue-900 dark:text-blue-500 font-bold">Contacts</span> Page
       </h2>
-      <div className="flex flex-col justify-center align-middle p-6">
+      <div className="flex flex-col p-6">
         <h1 className="text-2xl mb-4 self-center">Fill the form below</h1>
-        <div className="flex flex-col p-6">
+      </div>
+      <div className="p-4">
+        <div className="mx-auto flex flex-col max-w-3xl">
           <form onSubmit={handleOnSubmit}>
             <input type="hidden" name="_language" value="it" />
             <div className="flex flex-col mb-4">
@@ -144,10 +146,10 @@ const Contacts = () => {
             </div>
           </form>
         </div>
-        <div className="flex flex-col ml-8">
-          {status.info.error && <div className="error">Error: {status.info.msg}</div>}
-          {!status.info.error && status.info.msg && <p>{status.info.msg}</p>}
-        </div>
+      </div>
+      <div className="flex flex-col ml-8">
+        {status.info.error && <div className="error">Error: {status.info.msg}</div>}
+        {!status.info.error && status.info.msg && <p>{status.info.msg}</p>}
       </div>
     </div>
   );

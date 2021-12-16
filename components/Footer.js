@@ -65,7 +65,7 @@ const social = [
 
 const Footer = () => {
   return (
-    <div className="max-w-3xl mt-10 mx-auto px-4 sm:px-6 lg:px-0 flex flex-col justify-center">
+    <div className="max-w-full mx-auto py-10 px-4 sm:px-6 lg:px-0 flex flex-col justify-items-center dark:bg-gray-800">
       <div className="mt-8 flex justify-center space-x-6">
         {social.map(item => (
           <a
@@ -77,6 +77,9 @@ const Footer = () => {
             <item.icon className="h-6 w-6" aria-hidden="true" />
           </a>
         ))}
+      </div>
+      <div className="text-gray-500 text-center mt-4">
+        <p>cookie policy | privacy policy</p>
       </div>
       <div className="text-gray-500 text-center mt-4 mb-10">
         &copy;{new Date().getFullYear()} My Portfolio

@@ -2535,6 +2535,11 @@ next-share@^0.12.2:
   resolved "https://registry.yarnpkg.com/next-share/-/next-share-0.12.2.tgz#209e20c04d4e3e1e93f0b3d731142347bae9648e"
   integrity sha512-Eklbhcvyx51HZAvdDUFmI3YowamiVgoVpY7xOylENDttG0bdFxlF9iol9g6zoU0fLSAhDuZkdEurNcFFKVKu9Q==
 
+next-themes@^0.0.15:
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/next-themes/-/next-themes-0.0.15.tgz#ab0cee69cd763b77d41211f631e108beab39bf7d"
+  integrity sha512-LTmtqYi03c4gMTJmWwVK9XkHL7h0/+XrtR970Ujvtu3s0kZNeJN24aJsi4rkZOI8i19+qq6f8j+8Duwy5jqcrQ==
+
 next@^12.0.7:
   version "12.0.7"
   resolved "https://registry.yarnpkg.com/next/-/next-12.0.7.tgz#33ebf229b81b06e583ab5ae7613cffe1ca2103fc"

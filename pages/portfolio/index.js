@@ -6,14 +6,14 @@ import { Fade } from 'react-awesome-reveal';
 const PortfolioPage = ({ data }) => {
   console.log(data);
   return (
-    <div className="max-w-3xl mx-auto px-4 lg:px-0 flex flex-col">
-      <h2 className="text-4xl font-semibold text-gray-900 mb-8 pt-8 self-center">
-        <span className="text-blue-900 font-bold">Porftolio</span> Page
+    <div className="max-w-full mx-auto px-4 lg:px-0 flex flex-col dark:bg-gray-800 justify-center">
+      <h2 className="text-4xl font-semibold text-gray-900 mb-8 pt-8 self-center dark:text-gray-100">
+        <span className="text-blue-900 dark:text-blue-500 font-bold">Porftolio</span> Page
       </h2>
       {data.portfolios.map(portfolio => (
         <div key={portfolio.slug}>
           <Fade triggerOnce fraction={0.3}>
-            <div>
+            <div className="max-w-4xl mx-auto">
               <Link href={`/portfolio/${portfolio.slug}`}>
                 <a>
                   <div className="relative mb-10 border-2 shadow-xl hover:transition-transform hover:-translate-y-1 duration-300">
