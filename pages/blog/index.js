@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import useSWR from 'swr';
 import { Fade } from 'react-awesome-reveal';
+import PageTitle from '../../components/PageTitle';
 
 const fetcher = (endpoint, query, variables) => request(endpoint, query, variables);
 
@@ -75,9 +76,7 @@ const BlogPage = ({ posts }) => {
 
   return (
     <div className="flex flex-col dark:bg-gray-800">
-      <h2 className="text-4xl font-semibold text-gray-900 mb-8 pt-8 self-center dark:text-gray-100">
-        <span className="text-blue-900 dark:text-blue-500 font-bold">Blog</span> Page
-      </h2>
+      <PageTitle text="Blog" />
       <input
         type="text"
         value={searchValue}

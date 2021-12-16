@@ -2,16 +2,15 @@ import React from 'react';
 import { Fade } from 'react-awesome-reveal';
 import { getAuthors } from '../lib/data';
 import Image from 'next/image';
+import PageTitle from '../components/PageTitle';
 
 const About = ({ data }) => {
   return (
     <div className="max-w-full mx-auto px-4 lg:px-0 flex flex-col dark:bg-gray-800">
-      <h2 className="text-4xl font-semibold text-gray-900 mb-8 pt-8 self-center dark:text-gray-100">
-        <span className="text-blue-900 dark:text-blue-500 font-bold">About</span> Page
-      </h2>
-      <h2 className="text-3xl font-semibold text-gray-900 mb-8 pt-8 self-center dark:text-gray-100">
+      <PageTitle text="About" />
+      <h3 className="text-3xl font-semibold text-gray-900 mb-8 pt-2 self-center dark:text-gray-100">
         Team Members
-      </h2>
+      </h3>
       <div className="md:flex max-w-4xl mx-auto">
         {data.authors.map(author => (
           <div key={author.id}>

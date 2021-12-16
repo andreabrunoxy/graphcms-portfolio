@@ -2,6 +2,7 @@ import React from 'react';
 import { getPhotos } from '../lib/data';
 import Image from 'next/image';
 import { getPlaiceholder } from 'plaiceholder';
+import PageTitle from '../components/PageTitle';
 
 const blurImages = async photos => {
   const images = await Promise.all(
@@ -22,12 +23,10 @@ const blurImages = async photos => {
 const Gallery = ({ blurredPhotos }) => {
   return (
     <div className="max-w-full dark:bg-gray-800">
-      <div className="max-w-full flex">
-        <h2 className="text-4xl font-semibold text-gray-900 mb-8 pt-8 mx-auto dark:text-gray-100">
-          <span className="text-blue-900 dark:text-blue-500 font-bold">Gallery</span> Page
-        </h2>
+      <div className="max-w-full flex justify-center">
+        <PageTitle text="Gallery" />
       </div>
-      <div className="max-w-3xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-2">
+      <div className="max-w-3xl mt-4 mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-2">
         {blurredPhotos.map(photo => (
           <Image
             key={photo.id}

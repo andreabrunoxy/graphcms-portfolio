@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import PageTitle from '../components/PageTitle';
 
 const Contacts = () => {
   const [status, setStatus] = useState({
@@ -62,11 +63,11 @@ const Contacts = () => {
 
   return (
     <div className="lg:px-0 flex flex-col dark:bg-gray-800">
-      <h2 className="text-4xl font-semibold text-gray-900 mb-8 pt-8 self-center dark:text-gray-100">
-        <span className="text-blue-900 dark:text-blue-500 font-bold">Contacts</span> Page
-      </h2>
-      <div className="flex flex-col p-6">
-        <h1 className="text-2xl mb-4 self-center">Fill the form below</h1>
+      <PageTitle text="Contacts" />
+      <div className="flex flex-col">
+        <h3 className="text-3xl font-semibold text-gray-900 mb-8 pt-2 self-center dark:text-gray-100">
+          Fill the form below
+        </h3>
       </div>
       <div className="p-4">
         <div className="mx-auto flex flex-col max-w-3xl">
@@ -83,7 +84,7 @@ const Contacts = () => {
                 onChange={handleOnChange}
                 required
                 value={inputs.name}
-                className="p-2 border border-gray-200 focus:border-gray-400 focus:shadow-md transition-all duration-500 outline-none"
+                className="p-2 border border-gray-300 focus:border-gray-400 focus:shadow-md transition-all duration-500 outline-none"
                 placeholder="insert your name"
               />
             </div>
@@ -98,7 +99,7 @@ const Contacts = () => {
                 onChange={handleOnChange}
                 required
                 value={inputs.email}
-                className="p-2 border border-gray-200 focus:border-gray-400 focus:shadow-md transition-all duration-500 outline-none"
+                className="p-2 border border-gray-300 focus:border-gray-400 focus:shadow-md transition-all duration-500 outline-none"
                 placeholder="insert your email"
               />
             </div>
@@ -113,7 +114,7 @@ const Contacts = () => {
                 onChange={handleOnChange}
                 required
                 value={inputs.subject}
-                className="p-2 border border-gray-200 focus:border-gray-400 focus:shadow-md transition-all duration-500 outline-none"
+                className="p-2 border border-gray-300 focus:border-gray-400 focus:shadow-md transition-all duration-500 outline-none"
                 placeholder="insert your subject"
               />
             </div>
@@ -128,7 +129,7 @@ const Contacts = () => {
                 required
                 value={inputs.message}
                 placeholder="write your message"
-                className="h-48 p-2 border border-gray-200 focus:border-gray-400 focus:shadow-md transition-all duration-500 outline-none"
+                className="h-48 p-2 border border-gray-300 focus:border-gray-400 focus:shadow-md transition-all duration-500 outline-none"
               />
             </div>
             <div className="flex flex-col mb-4 p-4">
