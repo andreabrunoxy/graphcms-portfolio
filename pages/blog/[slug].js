@@ -1,7 +1,7 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import React from 'react';
-import { getPost, getBlogSlugs } from '../../lib/data';
+import Head from "next/head";
+import Image from "next/image";
+import React from "react";
+import { getPost, getBlogSlugs } from "../../lib/data";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -9,12 +9,14 @@ import {
   FacebookMessengerIcon,
   EmailShareButton,
   EmailIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
   WhatsappIcon,
   WhatsappShareButton,
   TwitterIcon,
   TwitterShareButton
-} from 'next-share';
-import { Fade } from 'react-awesome-reveal';
+} from "next-share";
+import { Fade } from "react-awesome-reveal";
 
 export default function Home({ post }) {
   console.log(post);
@@ -34,7 +36,7 @@ export default function Home({ post }) {
     }
 
     switch (type) {
-      case 'heading-three':
+      case "heading-three":
         return (
           <h3 key={index} className="text-xl font-semibold mb-4">
             {modifiedText.map((item, i) => (
@@ -42,7 +44,7 @@ export default function Home({ post }) {
             ))}
           </h3>
         );
-      case 'heading-four':
+      case "heading-four":
         return (
           <h4 key={index} className="text-md font-semibold mb-4">
             {modifiedText.map((item, i) => (
@@ -50,7 +52,7 @@ export default function Home({ post }) {
             ))}
           </h4>
         );
-      case 'paragraph':
+      case "paragraph":
         return (
           <p key={index} className="mb-8">
             {modifiedText.map((item, i) => (
@@ -58,15 +60,9 @@ export default function Home({ post }) {
             ))}
           </p>
         );
-      case 'image':
+      case "image":
         return (
-          <Image
-            key={index}
-            alt={obj.title}
-            height={obj.height}
-            width={obj.width}
-            src={obj.src}
-          />
+          <Image key={index} alt={obj.title} height={obj.height} width={obj.width} src={obj.src} />
         );
       default:
         return modifiedText;
@@ -98,6 +94,9 @@ export default function Home({ post }) {
             <p className="font-semibold mb-4 mr-4">{post.author.name}</p>
             <Image src={post.author.image.url} width="60" height="60" />
           </div>
+          <div className="mt-4">
+            <Image src={post.coverImage.url} width="600" height="400" layout="responsive" />
+          </div>
           <div className="after:inline-block border-b border-gray-200 mb-8 leading-relaxed"></div>
           {post.content.raw.children.map((typeObj, index) => {
             const children = typeObj.children.map((item, itemIndex) =>
@@ -111,19 +110,12 @@ export default function Home({ post }) {
               <FacebookShareButton
                 url={`https://graphcms-portfolio-andreabrunoxy.vercel.app/blog/${post.slug}`}
                 quote={`${post.title}`}
-                hashtag={'#myporftolio'}
+                hashtag={"#myporftolio"}
               >
                 <FacebookIcon size={32} round />
               </FacebookShareButton>
             </span>
-            <span className="mr-2">
-              <FacebookMessengerShareButton
-                url={`https://graphcms-portfolio-andreabrunoxy.vercel.app/blog/${post.slug}`}
-                appId={''}
-              >
-                <FacebookMessengerIcon size={32} round />
-              </FacebookMessengerShareButton>
-            </span>
+
             <span className="mr-2">
               <TwitterShareButton
                 url={`https://graphcms-portfolio-andreabrunoxy.vercel.app/blog/${post.slug}`}
@@ -140,6 +132,13 @@ export default function Home({ post }) {
               >
                 <WhatsappIcon size={32} round />
               </WhatsappShareButton>
+            </span>
+            <span className="mr-2">
+              <LinkedinShareButton
+                url={`https://graphcms-portfolio-andreabrunoxy.vercel.app/blog/${post.slug}`}
+              >
+                <LinkedinIcon size={32} round />
+              </LinkedinShareButton>
             </span>
           </div>
         </Fade>
